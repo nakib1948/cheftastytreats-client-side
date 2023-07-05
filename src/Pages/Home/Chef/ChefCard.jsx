@@ -1,8 +1,15 @@
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from 'react-router-dom';
 
 const ChefCard = ({ chef }) => {
-  const { name, picture, bio, experience, recipes, likes } = chef;
+  const { id,name, picture, bio, experience, recipes, likes } = chef;
+  const navigate=useNavigate()
+ 
+  const redirectToRecipePage=(id)=>{
+     navigate(`recipe/${id}`)
+  }
+
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
@@ -34,7 +41,7 @@ const ChefCard = ({ chef }) => {
           <div className="badge badge-outline p-4"><p> recipes: {recipes}</p></div>
         </div>
       </div>
-      <button className="btn btn-block btn-primary">View Recipes</button>
+      <button onClick={()=>redirectToRecipePage(id)} className="btn btn-block btn-primary">View Recipes</button>
     </div>
   );
 };

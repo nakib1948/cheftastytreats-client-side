@@ -3,6 +3,7 @@ import ChefCard from "./ChefCard";
 
 const Chef = () => {
   const [chefinfo, setChefinfo] = useState([]);
+  
 
   useEffect(() => {
     fetch("http://localhost:3000/chefs")

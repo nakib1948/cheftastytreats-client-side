@@ -9,6 +9,7 @@ import AuthProvider from "./providers/AuthProvider.jsx";
 import Home from "./Pages/Home/Home";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import Recipe from "./Pages/Recipe/Recipe";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
         path: "signup",
         element: <Signup></Signup>,
       },
+      {
+        path:"recipe/:id",
+        element: <Recipe></Recipe>,
+        loader:({params})=>fetch(`http://localhost:3000/recipes/${params.id}`)
+      }
     ],
   },
 ]);
