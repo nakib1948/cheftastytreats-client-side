@@ -10,6 +10,7 @@ import Home from "./Pages/Home/Home";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Recipe from "./Pages/Recipe/Recipe";
+import UnknownPage from "./Pages/UnknownPage";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
         path:"recipe/:id",
         element: <Recipe></Recipe>,
         loader:({params})=>fetch(`http://localhost:3000/recipes/${params.id}`)
+      },
+      {
+        path:"*",
+        element: <UnknownPage/>
       }
     ],
   },

@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfStroke, faHeart } from '@fortawesome/free-solid-svg-icons';
 const RecipeCard = ({ recipe }) => {
   const { img, recipe_name, ingredients, cooking_method,rating } = recipe;
+
+  const [isButtonDisabled, setButtonDisabled] = useState(false);
+  const handleButtonClick = () => {
+    
+    setButtonDisabled(true);
+  };
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure>
@@ -41,7 +47,8 @@ const RecipeCard = ({ recipe }) => {
         <p> <b>Ingredients:</b>  {ingredients}.</p>
         <p><b>Methods: </b>{cooking_method}</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary"><FontAwesomeIcon icon={faHeart} shake size="lg" />Favorite</button>
+          <button    onClick={handleButtonClick}
+        disabled={isButtonDisabled} className="btn btn-primary"><FontAwesomeIcon icon={faHeart} shake size="lg" />Favorite</button>
         </div>
       </div>
     </div>
