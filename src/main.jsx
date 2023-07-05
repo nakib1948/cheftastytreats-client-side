@@ -7,6 +7,9 @@ import Login from "./Pages/Login/Login.jsx";
 import Signup from "./Pages/Signup/Signup.jsx";
 import AuthProvider from "./providers/AuthProvider.jsx";
 import Home from "./Pages/Home/Home";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 const router = createBrowserRouter([
   {
     path: "/",

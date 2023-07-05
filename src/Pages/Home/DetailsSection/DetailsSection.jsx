@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./DetailsSection.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
