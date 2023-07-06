@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import logo from "../../assets/Cooking-Logo-design-template-vector.jpg";
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
+import ActiveLink from "../../ActiveLink/ActiveLink";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -23,11 +24,11 @@ const Navbar = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <button className="mr-6 btn btn-outline btn-info">
-          <Link to="/">Home</Link>
+          <ActiveLink to="/">Home</ActiveLink>
         </button>
 
         <button className="mr-6 btn btn-outline btn-info">
-          <Link to="/blog">Blog</Link>
+          <ActiveLink to="/blog">Blog</ActiveLink>
         </button>
 
         {user?.email && (

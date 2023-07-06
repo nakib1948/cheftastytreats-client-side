@@ -13,6 +13,7 @@ import Recipe from "./Pages/Recipe/Recipe";
 import UnknownPage from "./Pages/UnknownPage";
 import 'react-toastify/dist/ReactToastify.css';
 import Blog from "./Pages/Blog/Blog";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path:"recipe/:id",
-        element: <Recipe></Recipe>,
+        element:<PrivateRoute><Recipe></Recipe></PrivateRoute> ,
         loader:({params})=>fetch(`http://localhost:3000/recipes/${params.id}`)
       },
       {
