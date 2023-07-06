@@ -1,7 +1,8 @@
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from 'react-router-dom';
-
+import LazyLoad from 'react-lazy-load';
+import './Chef.css'
 const ChefCard = ({ chef }) => {
   const { id,name, picture, bio, experience, recipes, likes } = chef;
   const navigate=useNavigate()
@@ -13,11 +14,12 @@ const ChefCard = ({ chef }) => {
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
-        <img
-          src={picture}
-          alt="Shoes"
-          className="w-full h-80"
-        />
+      <LazyLoad    height={320}
+          offsetVertical={500}
+          debounce={500}
+          throttle={200}>
+          <img src={picture} alt="Shoes" className="w-full h-80" />
+        </LazyLoad>
       </figure>
       <div className="card-body">
         <h2 className="card-title">
