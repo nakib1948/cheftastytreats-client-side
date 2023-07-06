@@ -45,12 +45,11 @@ import {
     useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
         setUser(currentUser);
-        console.log("current user in auth Provider", currentUser);
+        //console.log(user.email)
+      //  console.log("current user in auth Provider", currentUser);
         setLoading(false);
       });
-      return () => {
-        return unsubscribe();
-      };
+      return () => unsubscribe();
     }, []);
   
     const authInfo = {

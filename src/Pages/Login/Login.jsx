@@ -7,13 +7,27 @@ import loginbackground from '../../assets/LoginBackground.jpg'
 import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
-  const { signIn} = useContext(AuthContext);
+  const { signIn,user} = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
 
   const handlelogin = (event) => {
     event.preventDefault();
+
+   if(user){
+     return  toast.warn('you are already logged in.Signout to log in anothe account', {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+   }
+
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;

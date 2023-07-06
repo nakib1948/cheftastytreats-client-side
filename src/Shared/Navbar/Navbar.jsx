@@ -1,69 +1,52 @@
-import React from "react";
-import logo from '../../assets/Cooking-Logo-design-template-vector.jpg'
+import React, { useContext } from "react";
+import logo from "../../assets/Cooking-Logo-design-template-vector.jpg";
+import { AuthContext } from "../../providers/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const navigate=useNavigate()
+  const signout=()=>{
+      logOut()
+      navigate('/')
+  }
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
-        <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
-        </div>
         <div>
-        <img className='h-24 rounded-full' src={logo} alt="" />
-        <p className="text-blue-600">Chef's Tasty Treats</p>
+          <Link to="/">
+            <img className="h-24 rounded-full" src={logo} alt="" />
+            <p className="text-blue-600">Chef's Tasty Treats</p>
+          </Link>
         </div>
-        
       </div>
       <div className="navbar-center hidden lg:flex">
-      
-          <h1 className="mr-6">
-            <a>Home</a>
-          </h1>
-          
-          <h6>
-            <a>Blog</a>
-          </h6>
+        <button className="mr-6 btn btn-outline btn-info">
+          <Link to="/">Home</Link>
+        </button>
 
+        <button className="mr-6 btn btn-outline btn-info">
+          <Link to="/blog">Blog</Link>
+        </button>
+
+        {user?.email && (
+          <button onClick={()=>signout()} className="mr-6 btn btn-outline btn-info">Logout</button>
+        )}
       </div>
       <div className="navbar-end">
-      <button className="btn btn-primary ">Login</button>
+        {user?.email ? (
+          <img
+            className="h-16 rounded-full group hover:tooltip"
+            src={user.photoURL}
+            alt="User Profile"
+            title={user.displayName}
+          />
+        ) : (
+          <button className="btn btn-primary">
+            <Link to="login">Login</Link>
+            </button>
+        )}
       </div>
     </div>
   );

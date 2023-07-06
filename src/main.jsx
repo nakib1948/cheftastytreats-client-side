@@ -12,6 +12,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Recipe from "./Pages/Recipe/Recipe";
 import UnknownPage from "./Pages/UnknownPage";
 import 'react-toastify/dist/ReactToastify.css';
+import Blog from "./Pages/Blog/Blog";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
         path:"recipe/:id",
         element: <Recipe></Recipe>,
         loader:({params})=>fetch(`http://localhost:3000/recipes/${params.id}`)
+      },
+      {
+        path: "blog",
+        element: <Blog></Blog>,
       },
       {
         path:"*",

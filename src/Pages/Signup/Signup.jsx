@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import loginbackground from "../../assets/LoginBackground.jpg";
 import login from "../../assets/Login.jpg";
@@ -8,7 +8,7 @@ import { getAuth, updateProfile } from "firebase/auth";
 const Signup = () => {
   const { createUser } = useContext(AuthContext);
   const auth = getAuth();
-  
+  const navigate=useNavigate()
 
   const handlesignup = (event) => {
     event.preventDefault();
@@ -54,6 +54,9 @@ const Signup = () => {
         updateProfile(auth.currentUser, {
           displayName: name, photoURL: photo
         }).then(() => {
+
+          form.reset()
+          navigate('/')
           // Profile updated!
           // ...
         }).catch((error) => {
