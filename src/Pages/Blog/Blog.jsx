@@ -1,12 +1,24 @@
 import React from "react";
 import blog from "../../assets/blog.jpg"
+import Pdf from "react-to-pdf";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilePdf, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+
+const ref = React.createRef();
 
 const Blog = () => {
   return (
     <>
-    <p className="my-10 text-3xl text-center">Blog</p>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 my-10 p-10"
+    <div>
+    <p className="my-10 text-3xl text-center">Blog </p>
+
+    <Pdf targetRef={ref} filename="code-example.pdf">
+        {({ toPdf }) => <button className="btn btn-outline" onClick={toPdf}>Download Pdf <FontAwesomeIcon icon={faFilePdf} shake size="xl" /></button>}
+      </Pdf>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 my-10 p-10 "
     style={{ backgroundImage: `url(${blog})`}}
+    ref={ref}
     >
       
       <div className="card w-auto bg-base-100 shadow-xl">
