@@ -4,9 +4,10 @@ import login from '../../assets/Login.jpg'
 import { AuthContext } from "../../providers/AuthProvider";
 import SocialLogin from "../../shared/SocialLogin/SocialLogin";
 import loginbackground from '../../assets/LoginBackground.jpg'
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn} = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -26,12 +27,24 @@ const Login = () => {
         navigate(from, { replace: true });
         
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        toast.warn('Please enter correct email and password', {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+      });
   };
   return (
     <div className="hero min-h-screen bg-base-200"
     style={{ backgroundImage: `url(${loginbackground})`, backgroundSize: "cover" }}
     >
+      <ToastContainer />
       <div className="hero-content flex-col lg:flex-row">
         <div className="mr-12 w-1/2">
           <img className="rounded-full" src={login} alt="" />

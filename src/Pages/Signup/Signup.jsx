@@ -1,36 +1,81 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import loginbackground from '../../assets/LoginBackground.jpg'
-import login from '../../assets/Login.jpg'
-
-import SocialLogin from "../../shared/SocialLogin/SocialLogin";
+import { useContext, useState } from "react";
+import loginbackground from "../../assets/LoginBackground.jpg";
+import login from "../../assets/Login.jpg";
+import { ToastContainer, toast } from 'react-toastify';
 import { AuthContext } from "../../providers/AuthProvider";
-
+import { getAuth, updateProfile } from "firebase/auth";
 const Signup = () => {
   const { createUser } = useContext(AuthContext);
+  const auth = getAuth();
+  
+
   const handlesignup = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const photo=form.photo.value;
 
-    console.log(name, email, password);
+    console.log(name, email, password,photo);
 
-    createUser(email,password)
-    .then(result=>{
-        const user=result.user
-        console.log(user)
-    })
-    .then(error=>console.log(error))
+    if (name === "" || email === "" || password === "" || photo==="") {
+      
+      return toast.warn(' Please fill out the empty field!', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
+
+    if(password.length<6)
+    {
+       return toast.warn('password should be atleast 6 characters', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        updateProfile(auth.currentUser, {
+          displayName: name, photoURL: photo
+        }).then(() => {
+          // Profile updated!
+          // ...
+        }).catch((error) => {
+          // An error occurred
+          // ...
+        });
+        console.log(user);
+      })
+      .then((error) => console.log(error));
   };
   return (
-    <div className="hero min-h-screen bg-base-200"
-    style={{ backgroundImage: `url(${loginbackground})`, backgroundSize: "cover" }}
+    <div
+      className="hero min-h-screen bg-base-200"
+      style={{
+        backgroundImage: `url(${loginbackground})`,
+        backgroundSize: "cover",
+      }}
     >
+      <ToastContainer />
       <div className="hero-content flex-col lg:flex-row">
         <div className="mr-12 w-1/2">
-        <img className="rounded-full" src={login} alt="" />
+          <img className="rounded-full" src={login} alt="" />
         </div>
 
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -70,6 +115,18 @@ const Signup = () => {
                   name="password"
                   className="input input-bordered"
                 />
+                
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo Url</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="url"
+                  name="photo"
+                  className="input input-bordered"
+                />
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
@@ -90,7 +147,7 @@ const Signup = () => {
                 Sign In
               </Link>
             </p>
-            <SocialLogin></SocialLogin>
+            
           </div>
         </div>
       </div>
