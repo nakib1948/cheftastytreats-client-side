@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ChefCard from "./ChefCard";
+import { motion } from "framer-motion";
 
 const Chef = () => {
   const [chefinfo, setChefinfo] = useState([]);
@@ -12,6 +13,11 @@ const Chef = () => {
   }, []);
 
   return (
+    <motion.div
+       initial={{ opacity: 0, y: 100 }}
+       animate={{ opacity: 1, y: 0 }}
+       transition={{ duration: 1, delay: 0.2 }}
+    >
     <div className="mt-4">
       <div className="text-center space-y-4">
         <h3 className="text-5xl py-4">Meet Our Expert Chefs</h3>
@@ -24,6 +30,7 @@ const Chef = () => {
         }
       </div>
     </div>
+    </motion.div>
   );
 };
 
