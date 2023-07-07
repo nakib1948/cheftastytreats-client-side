@@ -18,8 +18,8 @@ import { useInView } from "react-intersection-observer";
 
 const ReviewSection = () => {
   const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1, // Adjust this value as needed
+    triggerOnce: false,
+    threshold: 0.1, 
   });
 
   const variants = {
@@ -49,9 +49,9 @@ const ReviewSection = () => {
       {inView && (
         <motion.div
           initial="hidden"
-          animate="visible"
+          animate={inView ? "visible" : "hidden"} // Use inView to control the animation
           variants={variants}
-          transition={{ duration: 2 }}
+          transition={{ duration: 1.5 }}
         >
           <img src={testimonial} alt="" />
           <h1 className="text-3xl font-bold py-4">Our Customer Feedbacks</h1>

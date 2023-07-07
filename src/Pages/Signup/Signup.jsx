@@ -5,11 +5,21 @@ import login from "../../assets/Login.jpg";
 import { ToastContainer, toast } from 'react-toastify';
 import { AuthContext } from "../../providers/AuthProvider";
 import { getAuth, updateProfile } from "firebase/auth";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 const Signup = () => {
   const { createUser } = useContext(AuthContext);
   const auth = getAuth();
   const navigate=useNavigate()
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    threshold: 0.1, 
+  });
 
+  const variants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: { opacity: 1, y: 0 },
+  };
   const handlesignup = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -68,6 +78,13 @@ const Signup = () => {
       .then((error) => console.log(error));
   };
   return (
+    <div ref={ref}>
+    <motion.div
+         initial="hidden"
+         animate={inView ? "visible" : "hidden"} // Use inView to control the animation
+         variants={variants}
+         transition={{ duration: 1.5 }}
+    >
     <div
       className="hero min-h-screen bg-base-200"
       style={{
@@ -154,6 +171,8 @@ const Signup = () => {
           </div>
         </div>
       </div>
+    </div>
+    </motion.div>
     </div>
   );
 };

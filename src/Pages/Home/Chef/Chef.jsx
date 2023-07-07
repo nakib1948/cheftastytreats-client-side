@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
 import ChefCard from "./ChefCard";
 import { motion } from "framer-motion";
-
+import { useInView } from "react-intersection-observer";
 const Chef = () => {
   const [chefinfo, setChefinfo] = useState([]);
-  
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    threshold: 0.1, 
+  });
+
+  const variants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   useEffect(() => {
     fetch("http://localhost:3000/chefs")
@@ -13,10 +21,12 @@ const Chef = () => {
   }, []);
 
   return (
+    <div ref={ref}>
     <motion.div
-       initial={{ opacity: 0, y: 100 }}
-       animate={{ opacity: 1, y: 0 }}
-       transition={{ duration: 1, delay: 0.2 }}
+         initial="hidden"
+         animate={inView ? "visible" : "hidden"} // Use inView to control the animation
+         variants={variants}
+         transition={{ duration: 1.5 }}
     >
     <div className="mt-4">
       <div className="text-center space-y-4">
@@ -31,6 +41,7 @@ const Chef = () => {
       </div>
     </div>
     </motion.div>
+    </div>
   );
 };
 

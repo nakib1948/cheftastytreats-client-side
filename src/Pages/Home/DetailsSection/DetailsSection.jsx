@@ -5,7 +5,8 @@ import {
   faUsersLine,
   faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
-
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
 import chefImg from "../../../assets/icons8-chef-64.png";
@@ -13,7 +14,23 @@ import bg2 from "../../../assets/bg2.jpg";
 
 const DetailsSection = () => {
   const [countOn, setCountOn] = useState(false);
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    threshold: 0.1, 
+  });
+
+  const variants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: { opacity: 1, y: 0 },
+  };
   return (
+    <div ref={ref}>
+    <motion.div
+         initial="hidden"
+         animate={inView ? "visible" : "hidden"} // Use inView to control the animation
+         variants={variants}
+         transition={{ duration: 1.5 }}
+    >
     <ScrollTrigger onEnter={() => setCountOn(true)}>
       <div
         className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-6 mt-16 mb-20 relative
@@ -106,6 +123,8 @@ const DetailsSection = () => {
         </div>
       </div>
     </ScrollTrigger>
+    </motion.div>
+    </div>
   );
 };
 

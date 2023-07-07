@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const Recipe = () => {
   const [chefinfo, setChefinfo] = useState([]);
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    threshold: 0.1, 
+  });
 
+  const variants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: { opacity: 1, y: 0 },
+  };
   const recipe = useLoaderData();
   console.log(recipe)
   const param = useParams();
@@ -20,7 +30,13 @@ const Recipe = () => {
   }, []);
 
   return (
-    <div>
+    <div ref={ref}>
+    <motion.div
+         initial="hidden"
+         animate={inView ? "visible" : "hidden"} // Use inView to control the animation
+         variants={variants}
+         transition={{ duration: 1.5 }}
+    >
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           {chefinfo.length > 0 ? (
@@ -50,7 +66,7 @@ const Recipe = () => {
             }
 
        </div>
-     
+     </motion.div>
     </div>
   );
 };

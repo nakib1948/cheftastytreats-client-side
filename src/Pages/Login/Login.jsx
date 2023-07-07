@@ -5,12 +5,22 @@ import { AuthContext } from "../../providers/AuthProvider";
 import SocialLogin from "../../shared/SocialLogin/SocialLogin";
 import loginbackground from '../../assets/LoginBackground.jpg'
 import { ToastContainer, toast } from 'react-toastify';
-
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 const Login = () => {
   const { signIn,user} = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
+  const [ref, inView] = useInView({
+    triggerOnce: false,
+    threshold: 0.1, 
+  });
+
+  const variants = {
+    hidden: { opacity: 0, y: 100 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   const handlelogin = (event) => {
     event.preventDefault();
@@ -53,8 +63,17 @@ const Login = () => {
           theme: "light",
           });
       });
+
+     
   };
   return (
+    <div ref={ref}>
+    <motion.div
+         initial="hidden"
+         animate={inView ? "visible" : "hidden"} // Use inView to control the animation
+         variants={variants}
+         transition={{ duration: 1.5 }}
+    >
     <div className="hero min-h-screen bg-base-200"
     style={{ backgroundImage: `url(${loginbackground})`, backgroundSize: "cover" }}
     >
@@ -63,7 +82,7 @@ const Login = () => {
         <div className="mr-12 w-1/2">
           <img className="rounded-full" src={login} alt="" />
         </div>
-
+        
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body text-center">
             <h3 className="text-5xl font-bold">Login</h3>
@@ -114,6 +133,8 @@ const Login = () => {
           </div>
         </div>
       </div>
+    </div>
+    </motion.div>
     </div>
   );
 };

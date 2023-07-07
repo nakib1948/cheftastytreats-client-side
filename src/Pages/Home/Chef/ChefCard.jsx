@@ -15,9 +15,8 @@ const ChefCard = ({ chef }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, delay: 0.2 }}
+      whileHover={{ scale: 1.05, boxShadow: "0 0 8px rgba(0, 0, 0, 0.3)" }}
+      whileTap={{ scale: 0.95 }}
     >
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure>
@@ -58,7 +57,7 @@ const ChefCard = ({ chef }) => {
           View Recipes
         </button>
       </div>
-    </motion.div>
+      </motion.div>
   );
 };
 

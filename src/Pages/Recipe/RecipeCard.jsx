@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfStroke, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { ToastContainer, toast } from 'react-toastify';
-
+import { motion } from "framer-motion";
 const RecipeCard = ({ recipe }) => {
   const { img, recipe_name, ingredients, cooking_method,rating } = recipe;
 
@@ -21,6 +21,10 @@ const RecipeCard = ({ recipe }) => {
     setButtonDisabled(true);
   };
   return (
+    <motion.div
+    whileHover={{ scale: 1.05, boxShadow: "0 0 8px rgba(0, 0, 0, 0.3)" }}
+    whileTap={{ scale: 0.95 }}
+  >
     <div className="card bg-base-100 shadow-xl">
          <ToastContainer />
       <figure>
@@ -64,6 +68,7 @@ const RecipeCard = ({ recipe }) => {
         </div>
       </div>
     </div>
+    </motion.div>
   );
 };
 
