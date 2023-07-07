@@ -15,7 +15,7 @@ const Chef = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/chefs")
+    fetch("https://chef-recipe-hunter-server-side-nakib1948.vercel.app/chefs")
       .then((res) => res.json())
       .then((data) => setChefinfo(data));
   }, []);

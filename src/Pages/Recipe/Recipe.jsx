@@ -20,7 +20,7 @@ const Recipe = () => {
   const param = useParams();
 
   useEffect(() => {
-    fetch("http://localhost:3000/chefs")
+    fetch("https://chef-recipe-hunter-server-side-nakib1948.vercel.app/chefs")
       .then((res) => res.json())
       .then(async (data) => {
         const currentChef = await data.filter((data) => data.id == param.id);

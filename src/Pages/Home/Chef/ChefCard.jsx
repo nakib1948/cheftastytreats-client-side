@@ -2,7 +2,6 @@ import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import LazyLoad from "react-lazy-load";
-import { motion } from "framer-motion";
 
 import "./Chef.css";
 const ChefCard = ({ chef }) => {
@@ -14,10 +13,7 @@ const ChefCard = ({ chef }) => {
   };
 
   return (
-    <motion.div
-      whileHover={{ scale: 1.05, boxShadow: "0 0 8px rgba(0, 0, 0, 0.3)" }}
-      whileTap={{ scale: 0.95 }}
-    >
+   
       <div className="card w-96 bg-base-100 shadow-xl">
         <figure>
           <LazyLoad
@@ -57,7 +53,7 @@ const ChefCard = ({ chef }) => {
           View Recipes
         </button>
       </div>
-      </motion.div>
+    
   );
 };
 

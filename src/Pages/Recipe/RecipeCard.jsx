@@ -21,10 +21,7 @@ const RecipeCard = ({ recipe }) => {
     setButtonDisabled(true);
   };
   return (
-    <motion.div
-    whileHover={{ scale: 1.05, boxShadow: "0 0 8px rgba(0, 0, 0, 0.3)" }}
-    whileTap={{ scale: 0.95 }}
-  >
+  
     <div className="card bg-base-100 shadow-xl">
          <ToastContainer />
       <figure>
@@ -68,7 +65,6 @@ const RecipeCard = ({ recipe }) => {
         </div>
       </div>
     </div>
-    </motion.div>
   );
 };
 

@@ -34,7 +34,7 @@ const router = createBrowserRouter([
       {
         path:"recipe/:id",
         element:<PrivateRoute><Recipe></Recipe></PrivateRoute> ,
-        loader:({params})=>fetch(`http://localhost:3000/recipes/${params.id}`)
+        loader:({params})=>fetch(`https://chef-recipe-hunter-server-side-nakib1948.vercel.app/recipes/${params.id}`)
       },
       {
         path: "blog",
