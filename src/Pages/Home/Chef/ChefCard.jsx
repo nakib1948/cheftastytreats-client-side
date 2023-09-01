@@ -14,7 +14,7 @@ const ChefCard = ({ chef }) => {
 
   return (
    
-      <div className="card w-96 bg-base-100 shadow-xl">
+      <div className="card w-full bg-[#372848] shadow-xl">
         <figure>
           <LazyLoad
             height={320}
@@ -22,7 +22,7 @@ const ChefCard = ({ chef }) => {
             debounce={500}
             throttle={200}
           >
-            <img src={picture} alt="Shoes" className="w-full h-80" />
+            <img src={picture} alt="Shoes" className="w-full " />
           </LazyLoad>
         </figure>
         <div className="card-body">

@@ -50,12 +50,12 @@ const DetailsSection = () => {
             style={{ position: "absolute" }}
           ></div>
         </div>
-        <div className="bg-slate-200 text-center border-4 border-indigo-500/75 rounded-full p-20 "
+        <div className="bg-[#372848]  text-center border-4 border-indigo-500/75 rounded-full p-20 "
         >
           <FontAwesomeIcon
             icon={faUser}
             size="2xl"
-            style={{ color: "#331f51" }}
+            style={{ color: "#ffffff" }}
           />
           <h1 className="my-2 text-2xl">
             <CountUp
@@ -70,8 +70,8 @@ const DetailsSection = () => {
           <p className="text-3xl ">Customer Serve</p>
         </div>
 
-        <div className="bg-slate-200 text-center border-4 border-indigo-500/75 rounded-full p-20 flex flex-col items-center">
-          <img src={chefImg} alt="" className="mx-auto" />
+        <div className="bg-[#372848] text-center border-4 border-indigo-500/75 rounded-full p-20 flex flex-col items-center">
+          <img src={chefImg} alt="" className="mx-auto " />
           <h1 className="my-2 text-2xl">
             <CountUp
               className="text-2xl ..."
@@ -85,7 +85,7 @@ const DetailsSection = () => {
           <p className="text-3xl">Experience Chef</p>
         </div>
 
-        <div className="bg-slate-200 text-center border-4 border-indigo-500/75 rounded-full p-20">
+        <div className="bg-[#372848] text-center border-4 border-indigo-500/75 rounded-full p-20">
           <FontAwesomeIcon icon={faUsersLine} size="2xl" />
           <h1 className="my-2 text-2xl">
             <CountUp
@@ -100,7 +100,7 @@ const DetailsSection = () => {
           <p className="text-3xl">Happy Customer</p>
         </div>
 
-        <div className="bg-slate-200 text-center border-4 border-indigo-500/75 rounded-full p-20">
+        <div className="bg-[#372848] text-center border-4 border-indigo-500/75 rounded-full p-20">
           <FontAwesomeIcon
             icon={faTrophy}
             size="2xl"
@@ -119,7 +119,7 @@ const DetailsSection = () => {
             />{" "}
             +
           </h1>
-          <p className="text-3xl">Winning Award</p>
+          <p className="text-3xl ">Winning Award</p>
         </div>
       </div>
     </ScrollTrigger>

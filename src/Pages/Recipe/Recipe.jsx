@@ -30,22 +30,22 @@ const Recipe = () => {
   }, []);
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="mx-auto max-w-7xl">
     <motion.div
          initial="hidden"
          animate={inView ? "visible" : "hidden"} // Use inView to control the animation
          variants={variants}
          transition={{ duration: 1.5 }}
     >
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero min-h-screen bg-[#372848]">
         <div className="hero-content flex-col lg:flex-row-reverse">
           {chefinfo.length > 0 ? (
             <>
               <img
                 src={chefinfo[0].picture}
-                className="max-w-sm h-auto rounded-lg shadow-2xl"
+                className="w-96 h-96 mask mask-squircle shadow-2xl"
               />
-              <div className="text-center">
+              <div className="text-center w-1/2">
                 <h1 className="text-5xl font-bold">Chef {chefinfo[0].name}</h1>
                 <p className="py-6 text-xl" >{chefinfo[0].bio}</p>
                

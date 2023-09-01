@@ -57,7 +57,7 @@ const ReviewSection = () => {
           <h1 className="text-3xl font-bold py-4">Our Customer Feedbacks</h1>
           <Slider {...settings} className="mb-20">
             <div>
-              <div className="card w-96 bg-base-100 shadow-xl">
+              <div className="card w-96  bg-[#372848] shadow-xl">
                 <figure className="px-10 pt-10">
                   <img className="rounded-lg h-28" src={man1} alt="Slide 1" />
                 </figure>
@@ -102,7 +102,7 @@ const ReviewSection = () => {
             </div>
 
             <div>
-              <div className="card w-96 bg-base-100 shadow-xl">
+              <div className="card w-96 bg-[#372848] shadow-xl">
                 <figure className="px-10 pt-10">
                   <img
                     className="rounded-full  h-28"
@@ -152,7 +152,7 @@ const ReviewSection = () => {
             </div>
 
             <div>
-              <div className="card w-96 bg-base-100 shadow-xl">
+              <div className="card w-96 bg-[#372848] shadow-xl">
                 <figure className="px-10 pt-10">
                   <img
                     className="rounded-full  h-28"
@@ -197,7 +197,7 @@ const ReviewSection = () => {
             </div>
 
             <div>
-              <div className="card w-96 bg-base-100 shadow-xl">
+              <div className="card w-96 bg-[#372848] shadow-xl">
                 <figure className="px-10 pt-10">
                   <img
                     className="rounded-full  h-28"
@@ -247,7 +247,7 @@ const ReviewSection = () => {
             </div>
 
             <div>
-              <div className="card w-96 bg-base-100 shadow-xl">
+              <div className="card w-96 bg-[#372848] shadow-xl">
                 <figure className="px-10 pt-10">
                   <img
                     className="rounded-full  h-28"
@@ -296,7 +296,7 @@ const ReviewSection = () => {
               </div>
             </div>
             <div>
-              <div className="card w-96 bg-base-100 shadow-xl">
+              <div className="card w-96 bg-[#372848] shadow-xl">
                 <figure className="px-10 pt-10">
                   <img
                     className="rounded-full  h-28"

@@ -74,7 +74,7 @@ const Login = () => {
          variants={variants}
          transition={{ duration: 1.5 }}
     >
-    <div className="hero min-h-screen bg-base-200"
+    <div className="hero min-h-screen bg-[#372848]"
     style={{ backgroundImage: `url(${loginbackground})`, backgroundSize: "cover" }}
     >
       <ToastContainer />
@@ -83,7 +83,7 @@ const Login = () => {
           <img className="rounded-full" src={login} alt="" />
         </div>
         
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-[#372848]">
           <div className="card-body text-center">
             <h3 className="text-5xl font-bold">Login</h3>
 

@@ -32,7 +32,7 @@ const BannerSection = () => {
         <div className="hero-content flex flex-col lg:flex-row-reverse items-center">
           <img
             src={Bannerimg}
-            className="max-w-xl rounded-full shadow-2xl mx-4 lg:mx-0 "
+            className="md:max-w-xl sm:max-w-sm lg:max-w-xl rounded-full shadow-2xl mx-4 lg:mx-0 "
             alt="Banner"
           />
           <div className="text-center lg:text-left mx-4 lg:mx-0">
@@ -41,9 +41,16 @@ const BannerSection = () => {
                 sequence={[
                   // Same substring at the start will only be typed once, initially
                   "Delight Your Taste Buds",
+                  1000,
+                  "Enchant Your Palate",
+                  1000,
+                  "Tickle Your Taste Buds",
+                  1000,
+                  "Satisfy Your Flavor Cravings"
                 ]}
                 speed={40}
                 style={{ fontSize: "1em" }}
+                repeat={Infinity}
               />
             
             </h1>

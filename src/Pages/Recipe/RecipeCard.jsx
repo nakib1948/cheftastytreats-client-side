@@ -22,7 +22,7 @@ const RecipeCard = ({ recipe }) => {
   };
   return (
   
-    <div className="card bg-base-100 shadow-xl">
+    <div className="card bg-[#372848] shadow-xl">
          <ToastContainer />
       <figure>
         <img src={img} alt="Movie" />

@@ -13,7 +13,7 @@ const Blog = () => {
     <p className="my-10 text-3xl text-center">Blog </p>
 
     <Pdf targetRef={ref} filename="code-example.pdf">
-        {({ toPdf }) => <button className="btn btn-outline" onClick={toPdf}>Download Pdf <FontAwesomeIcon icon={faFilePdf} shake size="xl" /></button>}
+        {({ toPdf }) => <button className="btn btn-outline bg-[#372848] text-white" onClick={toPdf}>Download Pdf <FontAwesomeIcon icon={faFilePdf} shake size="xl" /></button>}
       </Pdf>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 my-10 p-10 "
@@ -21,7 +21,7 @@ const Blog = () => {
     ref={ref}
     >
       
-      <div className="card w-auto bg-base-100 shadow-xl">
+      <div className="card w-auto bg-[#372848] shadow-xl">
         <div className="card-body">
           <h2 className="card-title">
             Tell us the differences between uncontrolled and controlled
@@ -41,7 +41,7 @@ const Blog = () => {
           </p>
         </div>
       </div>
-      <div className="card w-auto bg-base-100 shadow-xl">
+      <div className="card w-auto bg-[#372848] shadow-xl">
         <div className="card-body">
           <h2 className="card-title">
             How to validate React props using PropTypes
@@ -60,7 +60,7 @@ const Blog = () => {
           </p>
         </div>
       </div>
-      <div className="card w-auto bg-base-100 shadow-xl">
+      <div className="card w-auto bg-[#372848] shadow-xl">
         <div className="card-body">
           <h2 className="card-title">
             Tell us the difference between nodejs and express js.
@@ -80,7 +80,7 @@ const Blog = () => {
           </p>
         </div>
       </div>
-      <div className="card w-auto bg-base-100 shadow-xl">
+      <div className="card w-auto bg-[#372848] shadow-xl">
         <div className="card-body">
           <h2 className="card-title">
             What is a custom hook, and why will you create a custom hook?
